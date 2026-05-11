@@ -3,7 +3,7 @@ package ufpb.br.dcx.saraiva.poo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Colecao {
+public class Colecao implements ProgramaGibi{
     List<Gibi> estante = new ArrayList<>();
 
     public void adicionarHq(Gibi hq){
