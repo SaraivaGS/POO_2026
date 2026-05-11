@@ -6,10 +6,14 @@ import java.util.List;
 public class Colecao {
     List<Gibi> estante = new ArrayList<>();
 
-    public void bling(Gibi hq){
-        estante.add(hq);
+    public void adicionarHq(Gibi hq){
+        if (estante.contains(hq)){
+            GibiRepetidoException mensagem = new GibiRepetidoException("Gibi repido");
+            System.out.println(mensagem.getMessage());
+            } else {
+            estante.add(hq);
+        }
+        }
     }
-    public void show(){
-        System.out.println(estante);
-    }
-}
+
+
