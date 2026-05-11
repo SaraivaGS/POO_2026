@@ -1,16 +1,16 @@
 package ufpb.br.dcx.saraiva.poo;
 
-public class Bla {
+public class Gibi {
     private String nome;
     private String review;
     private double nota;
 
-    public Bla(String nome, String review, double nota){
+    public Gibi(String nome, String review, double nota){
         this.nome = nome;
         this.review = review;
         this.nota = nota;
     }
-    public Bla(){
+    public Gibi(){
         this.nome = "Sem nome";
         this.review = "vazio";
         this.nota = 0;
