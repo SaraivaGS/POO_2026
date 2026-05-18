@@ -5,22 +5,18 @@ public class Gibi {
     private String review;
     private double nota;
     private String heroi;
-    private String id;
 
-    public Gibi(String nome, String heroi, String review, double nota, String id){
+    public Gibi(String nome, String heroi, String review, double nota){
         this.nome = nome;
         this.review = review;
         this.nota = nota;
         this.heroi = heroi;
-        this.id = id;
     }
     public Gibi(){
         this.nome = "Sem nome";
         this.review = "Vazio";
         this.nota = 0;
         this.heroi = "Não defenido";
-        this.id = "nulo";
-
     }
 
     @Override
