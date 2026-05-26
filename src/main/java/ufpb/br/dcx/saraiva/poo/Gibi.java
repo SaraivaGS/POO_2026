@@ -1,30 +1,39 @@
 package ufpb.br.dcx.saraiva.poo;
 
 public class Gibi {
+    private String id;
     private String nome;
     private String review;
     private double nota;
     private String heroi;
 
-    public Gibi(String nome, String heroi, String review, double nota){
+    public Gibi(String id, String nome, String heroi, String review, double nota){
+        this.id = id;
         this.nome = nome;
         this.review = review;
         this.nota = nota;
         this.heroi = heroi;
     }
+
     public Gibi(){
+        this.id = "0";
         this.nome = "Sem nome";
         this.review = "Vazio";
         this.nota = 0;
-        this.heroi = "Não defenido";
+        this.heroi = "Não definido";
     }
 
     @Override
     public String toString() {
-        return "Gibi "+ nome + '\'' +
-                " Review: " + review + '\'' +
-                " Nota: " + nota +
-                " Heroi: " + heroi;
+        return "ID: " + id + " | Gibi " + nome + " | Review: " + review + " | Nota: " + nota + " | Heroi: " + heroi;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNome() {

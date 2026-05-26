@@ -5,31 +5,30 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Janela {
-    public static void main(String[] agrs) {
+    public static void main(String[] args) {
         JFrame window = new JFrame("Home");
-        JOptionPane lay = new JOptionPane();
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setSize(300, 300);
 
         Colecao cole = new Colecao();
-        Gibi abobra = new Gibi("Reino do ontem","superman", "batma é bom dimai", 9);
-        cole.adicionarHq(abobra);
+        Gibi abobra = new Gibi("1", "Reino do ontem", "superman", "batman é bom demais", 9);
 
+        try {
+            cole.adicionarHq(abobra);
+        } catch (GibiRepetidoException e) {
+            JOptionPane.showMessageDialog(window, e.getMessage());
+        }
 
-        window.setVisible(true);
-
-        JButton botao1 = new JButton("mostar hqs");
+        JButton botao1 = new JButton("mostrar hqs");
 
         botao1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(cole.toString());
+                JOptionPane.showMessageDialog(window, cole.toString());
             }
         });
-        window.setVisible(true);
+
         window.add(botao1);
-
-
+        window.setVisible(true);
     }
-
 }
