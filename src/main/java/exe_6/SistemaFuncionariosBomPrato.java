@@ -1,5 +1,6 @@
 package exe_6;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class SistemaFuncionariosBomPrato implements SistemaFuncionarios{
 
     @Override
     public void cadastrarFuncionario(Funcionario funcionario) throws FuncionarioJaExisteException {
+        funcionarios.put(funcionario.getCpf(), funcionario);
 
     }
 
@@ -32,31 +34,60 @@ public class SistemaFuncionariosBomPrato implements SistemaFuncionarios{
 
     @Override
     public void alterarSalarioDeFuncionario(String cpfFuncionario, double novoSalario) throws FuncionarioInexistenteException {
-
+        if(funcionarios.containsKey(cpfFuncionario)) {
+            for (Funcionario f : funcionarios.values()) {
+                if (f.getCpf().equals(cpfFuncionario)) {
+                    f.setSalario(novoSalario);
+                }
+            }
+        } else {throw new FuncionarioInexistenteException("Funcionario não existe");}
     }
 
     @Override
     public int contarFuncionariosDoTipo(TipoFuncionario tipo) {
-        return 0;
+        int x = 0;
+        for(Funcionario f : funcionarios.values()){
+            if(f.getTipo() == tipo){
+                x++;
+            }
+        }
+        return x;
     }
 
     @Override
     public boolean funcionarioJaExiste(String cpfFuncionario) {
-        return false;
+        return funcionarios.containsKey(cpfFuncionario);
     }
 
     @Override
     public List<Funcionario> pesquisarFuncionariosPorTipo(TipoFuncionario tipo) {
-        return null;
+        List<Funcionario> lista = new ArrayList<>();
+        for (Funcionario f: funcionarios.values()){
+            if(f.getTipo()==tipo){
+                lista.add(f);
+            }
+        }
+
+        return lista;
     }
 
     @Override
     public Funcionario pesquisarFuncionario(String cpfFuncionario) throws FuncionarioInexistenteException {
-        return null;
+        if (funcionarios.containsKey(cpfFuncionario)) {
+            return funcionarios.get(cpfFuncionario);
+        } else{throw new FuncionarioInexistenteException("Funcionario não existe");}
+
     }
 
     @Override
     public List<Funcionario> pesquisarFuncionariosComSalarioMaiorQue(double valor) {
-        return null;
+        List<Funcionario> lista = new ArrayList<>();
+        for (Funcionario f : funcionarios.values()){
+            if(f.getSalario()>valor){
+                lista.add(f);
+            }
+        }
+
+        return lista;
     }
 }
